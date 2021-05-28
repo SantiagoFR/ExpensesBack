@@ -1,0 +1,4 @@
+com/autentia/expensesapplication/mapper/ExpenseRowMapper.class
+com/autentia/expensesapplication/web/ExpensesController.class
+com/autentia/expensesapplication/entities/Expense.class
+com/autentia/expensesapplication/repository/ExpensesRepository.class
