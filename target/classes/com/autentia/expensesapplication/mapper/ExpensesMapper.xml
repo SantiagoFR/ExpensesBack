@@ -1,8 +1,0 @@
-<mapper namespace="com.autentia.expensesapplication.mapper.ExpensesMapper">
-
-    <select id="findAll" resultType="List">
-        SELECT * FROM expenses.expenses;
-    </select>
-
-
-</mapper>

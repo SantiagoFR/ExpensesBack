@@ -1,4 +1,11 @@
+com/autentia/expensesapplication/mapper/PersonRowMapper.class
 com/autentia/expensesapplication/mapper/ExpenseRowMapper.class
-com/autentia/expensesapplication/web/ExpensesController.class
+com/autentia/expensesapplication/service/ExpensesService.class
 com/autentia/expensesapplication/entities/Expense.class
+com/autentia/expensesapplication/service/PersonService.class
+com/autentia/expensesapplication/repository/PersonRepository.class
+com/autentia/expensesapplication/entities/Person.class
+com/autentia/expensesapplication/web/PersonController.class
+com/autentia/expensesapplication/web/ExpensesController.class
 com/autentia/expensesapplication/repository/ExpensesRepository.class
+com/autentia/expensesapplication/ExpensesApplication.class
