@@ -35,16 +35,15 @@ public class ExpensesRepository {
                 expense.getAuthor(), expense.getAmount(), expense.getDescription(), expense.getDate(), id);
     }
 
-    public Map<String, Float> getBalance() {
-        List<Expense> expenses = jdbcTemplate.query("SELECT * FROM expenses.expenses", new ExpenseRowMapper());
-        Map<String, Float> balance = new HashMap<>();
-        for (Expense expense: expenses) {
-            if (balance.containsKey(expense.getAuthor())) {
-                balance.replace(expense.getAuthor(), expense.getAmount() + balance.get(expense.getAuthor()));
-            } else {
-                balance.put(expense.getAuthor(), expense.getAmount());
-            }
-        }
-        return balance;
+    public Float getExpensesByAuthor(String author) {
+        Float result = jdbcTemplate.queryForObject("SELECT SUM(amount) FROM expenses.expenses WHERE author = ?", new Object[] { author }, Float.class);
+        if (result == null ) return 0f;
+        return result;
+    }
+
+    public Float getExpensesInTotal() {
+        Float result = jdbcTemplate.queryForObject("SELECT SUM(amount) FROM expenses.expenses", Float.class);
+        if (result == null ) return 0f;
+        return result;
     }
 }

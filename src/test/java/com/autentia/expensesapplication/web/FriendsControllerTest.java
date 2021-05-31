@@ -1,7 +1,7 @@
 package com.autentia.expensesapplication.web;
 
 import com.autentia.expensesapplication.entities.Friend;
-import com.autentia.expensesapplication.service.FriendService;
+import com.autentia.expensesapplication.service.FriendsService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,26 +13,26 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-public class FriendControllerTest {
-    private FriendController friendController;
+public class FriendsControllerTest {
+    private FriendsController friendsController;
 
-    private FriendService friendService;
+    private FriendsService friendsService;
 
     @Before
     public void init(){
-        friendService = mock(FriendService.class);
-        friendController = new FriendController(friendService);
+        friendsService = mock(FriendsService.class);
+        friendsController = new FriendsController(friendsService);
     }
 
     @Test
     public void expensesControllerShouldCallService() throws ParseException {
         List<Friend> expectedResponse = new ArrayList<Friend>(Arrays.asList(new Friend("Rodolfo", "Lopez")));
 
-        when(friendService.findAll()).thenReturn(expectedResponse);
+        when(friendsService.findAll()).thenReturn(expectedResponse);
 
-        List<Friend> expenses = friendController.findAll();
+        List<Friend> expenses = friendsController.findAll();
 
-        verify(friendService).findAll();
+        verify(friendsService).findAll();
         assertTrue(expenses.equals(expectedResponse));
     }
 }

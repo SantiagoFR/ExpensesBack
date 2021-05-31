@@ -1,7 +1,7 @@
 package com.autentia.expensesapplication.service;
 
 import com.autentia.expensesapplication.entities.Friend;
-import com.autentia.expensesapplication.repository.FriendRepository;
+import com.autentia.expensesapplication.repository.FriendsRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,25 +13,25 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-public class FriendServiceTest {
-    private FriendService friendService;
-    private FriendRepository friendRepository;
+public class FriendsServiceTest {
+    private FriendsService friendsService;
+    private FriendsRepository friendsRepository;
 
     @Before
     public void init() {
-        friendRepository = mock(FriendRepository.class);
-        friendService = new FriendService(friendRepository);
+        friendsRepository = mock(FriendsRepository.class);
+        friendsService = new FriendsService(friendsRepository);
     }
 
     @Test
     public void expensesServiceShouldCallRepository() throws ParseException {
         List<Friend> expectedResponse = new ArrayList<Friend>(Arrays.asList(new Friend("Rodolfo", "Lopez")));
 
-        when(friendRepository.findAll()).thenReturn(expectedResponse);
+        when(friendsRepository.findAll()).thenReturn(expectedResponse);
 
-        List<Friend> expenses = friendService.findAll();
+        List<Friend> expenses = friendsService.findAll();
 
-        verify(friendRepository).findAll();
+        verify(friendsRepository).findAll();
         assertTrue(expenses.equals(expectedResponse));
     }
 }

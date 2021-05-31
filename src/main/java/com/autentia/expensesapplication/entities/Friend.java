@@ -10,12 +10,14 @@ public class Friend {
     private long id;
     private String firstname;
     private String lastname;
+    private String fullname;
 
     public Friend() {}
 
     public Friend(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.fullname = firstname + ' ' + lastname;
     }
 
     public long getId() {
@@ -39,7 +41,7 @@ public class Friend {
     }
 
     public String getFullName() {
-        return firstname + ' ' + lastname;
+        return fullname;
     }
 
     public void setLastname(String lastname) {

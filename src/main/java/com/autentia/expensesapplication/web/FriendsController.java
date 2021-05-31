@@ -1,7 +1,7 @@
 package com.autentia.expensesapplication.web;
 
 import com.autentia.expensesapplication.entities.Friend;
-import com.autentia.expensesapplication.service.FriendService;
+import com.autentia.expensesapplication.service.FriendsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,23 +10,23 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 @RestController
-public class FriendController {
+public class FriendsController {
 
-    private FriendService friendService;
+    private FriendsService friendsService;
 
-    public FriendController(FriendService friendService) {
-        this.friendService = friendService;
+    public FriendsController(FriendsService friendsService) {
+        this.friendsService = friendsService;
     }
 
     @GetMapping(value = "/friends")
     public List<Friend> findAll() {
-        return friendService.findAll();
+        return friendsService.findAll();
     }
 
     @PostMapping(value = "/friends")
     public ResponseEntity<String> addFriend(
             @RequestBody Friend friend) {
-        friendService.addFriend(friend);
+        friendsService.addFriend(friend);
         return new ResponseEntity<String>(HttpStatus.OK);
 
     }

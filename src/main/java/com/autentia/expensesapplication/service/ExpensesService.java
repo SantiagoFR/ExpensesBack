@@ -24,7 +24,10 @@ public class ExpensesService {
 
     public Expense getExpense(int id) { return expensesRepository.getExpense(id); }
 
+    public Float getExpensesByAuthor(String author) { return expensesRepository.getExpensesByAuthor(author); }
+
+    public Float getExpensesInTotal() { return expensesRepository.getExpensesInTotal(); }
+
     public void updateExpense(int id, Expense expense) { expensesRepository.updateExpense(id, expense); }
 
-    public Map<String, Float> getBalance() { return expensesRepository.getBalance(); }
 }
