@@ -72,4 +72,10 @@ public class Expense implements Comparable<Expense> {
     public int compareTo(Expense expense) {
         return expense.getDate().compareTo(getDate());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        final Expense expense = (Expense) obj;
+        return this.id == expense.id;
+    }
 }

@@ -14,8 +14,11 @@ import java.util.Map;
 @Repository
 public class ExpensesRepository {
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public ExpensesRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Expense> findAll() {
         return jdbcTemplate.query("SELECT * FROM expenses.expenses", new ExpenseRowMapper());

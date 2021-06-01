@@ -1,0 +1,6 @@
+com/autentia/expensesapplication/web/FriendsControllerTest.class
+com/autentia/expensesapplication/ExpensesApplicationTest.class
+com/autentia/expensesapplication/service/ExpensesServiceTest.class
+com/autentia/expensesapplication/repository/ExpensesRepositoryTest.class
+com/autentia/expensesapplication/service/FriendsServiceTest.class
+com/autentia/expensesapplication/web/ExpensesControllerTest.class
