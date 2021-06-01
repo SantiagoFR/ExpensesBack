@@ -28,6 +28,7 @@ public class ExpensesController {
         this.friendsService = friendsService;
     }
 
+    //TODO: Tests
     @GetMapping(value = "/expenses")
     public List<Expense> findAll() {
         List<Expense> result = expensesService.findAll();
@@ -64,6 +65,34 @@ public class ExpensesController {
         }
 
         return expensesByFriend;
+    }
+
+    @GetMapping(value = "/expenses/minimum-payments")
+    public Map<String, Float> getMinimumPayments() {
+        Map<String, Float> balance = this.getBalance();
+        Map<String, Float> minimumPayments = new HashMap<>();
+
+        for (Map.Entry<String, Float> payer : balance.entrySet()) {
+            float amount = payer.getValue();
+            if (amount < 0) {
+                for (Map.Entry<String, Float> another : balance.entrySet()){
+                    if(payer.getKey().contentEquals(another.getKey()) || another.getValue() <= 0) continue;
+                    if (another.getValue() + amount >= 0){
+                        minimumPayments.put(payer.getKey() + " => " + another.getKey(), Math.round(-amount * 100f) / 100f);
+                        balance.replace(another.getKey(), another.getValue() + amount);
+                        balance.replace(payer.getKey(), 0f);
+                        break;
+                    } else {
+                        minimumPayments.put(payer.getKey() + " => " + another.getKey(), Math.round(another.getValue() * 100f) / 100f);
+                        amount = another.getValue() + amount;
+                        balance.replace(payer.getKey(), amount);
+                        balance.replace(another.getKey(), 0f);
+                    }
+                }
+            }
+        }
+
+        return minimumPayments;
     }
 
 
